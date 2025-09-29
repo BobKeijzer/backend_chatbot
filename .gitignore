@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# External data
+user_indexes/
+*.db
+
+# Environments
+.venv/
+
+# Logs
+*.log
+*.out
+
+# IDE files
+.vscode/
+.idea/
+
+# Environment variables
+.env
+
+# Docker
+*.tar
+*.log
+
+# OS files
+.DS_Store
