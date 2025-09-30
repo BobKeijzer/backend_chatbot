@@ -25,7 +25,7 @@ The project was created for **learning purposes**, focusing on FastAPI, LangChai
 ## Frontend
 
 Frontend lives in a separate repo:  
-[webai-frontend](https://github.com/BobKeijzer/webai-frontend)  
+[frontend_chatbot](https://github.com/BobKeijzer/frontend_chatbot)  
 
 Hosted on **Vercel**, while the backend is designed to run in a Docker container or just as code on **Azure App Services**.
 
