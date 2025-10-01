@@ -1,7 +1,7 @@
 import os
-import fitz #PyMuPDF 
+import PyPDF2 
 import pandas as pd
-from docx import Document
+from docx import Document as Doc
 import numpy as np
 import sqlite3
 import tempfile
@@ -80,22 +80,24 @@ def extract_text_from_file(file, filename):
     return content
 
 def extract_text_from_pdf(file):
-    try: 
-        data = file.read()
+    try:
         file.seek(0)
-        with fitz.open(stream=data, filetype="pdf") as doc:
-            text = ""
-            for page in doc:
-                text += page.get_text() + "\n\n"
+        pdf_reader = PyPDF2.PdfReader(file)
+        text = ""
+        for page_num in range(len(pdf_reader.pages)):
+            page = pdf_reader.pages[page_num]
+            page_text = page.extract_text()
+            if page_text:  
+                text += page_text + "\n"
         return text.strip()
     except Exception:
         return ""
-
+    
 def extract_text_from_docx(file):
     try:
         data = file.read()
         file.seek(0)
-        doc = Document(io.BytesIO(data))
+        doc = Doc(io.BytesIO(data))
         text = "\n\n".join(para.text for para in doc.paragraphs)
         return text.strip()
     except Exception:
